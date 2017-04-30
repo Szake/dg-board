@@ -1,0 +1,142 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Wrapper: */
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Board: */
+.board {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 60vh;
+  background: #f2f2f2;
+  font: 400 14px/1.5 sans-serif;
+}
+.board.board_sm {
+  max-width: 800px;
+  min-width: 400px;
+  max-height: 400px;
+  min-height: 300px;
+}
+.board.board_md {
+  max-width: 1000px;
+  min-width: 600px;
+  max-height: 600px;
+  min-height: 400px;
+}
+.board.board_lg {
+  max-width: 1200px;
+  min-width: 800px;
+  max-height: 800px;
+  min-height: 600px;
+}
+
+.board-step {
+  position: absolute;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  padding: 20px;
+  background: transparent;
+}
+// .board-step.to-top {}
+// .board-step.to-right {}
+// .board-step.to-bottom {}
+// .board-step.to-left {}
+// .board-step.root {}
+
+.board-step-inner {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  max-width: 100px;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  background: #444;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  font-size: calc(80% + 0.5vw);
+  color: #fff;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+.board-step.root .board-step-inner {
+  border: 2px solid #fff;
+}
+
+.board-step-label {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #000;
+  font-size: 10px;
+  line-height: 20px;
+  color: #fff;
+}
+
+.board-step-path {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  z-index: 1;
+  background: #ccc;
+}
+.board-step.to-top .board-step-path { top: -11px; }
+.board-step.to-right .board-step-path { right: -11px; }
+.board-step.to-bottom .board-step-path { bottom: -11px; }
+.board-step.to-left .board-step-path { left: -11px; }
+
+.board-step-arrow {
+  position: absolute;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  background: #000;
+  color: #000;
+}
+.board-step-arrow:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  border-top: 10px solid transparent;
+  border-left: 10px solid;
+  border-bottom: 10px solid transparent;
+  transform-origin: 50% 50% !important;
+}
+.board-step.to-top .board-step-arrow {
+  top: 0;
+  left: calc(50% - 5px);
+  transform: rotate(270deg);
+}
+.board-step.to-right .board-step-arrow {
+  top: calc(50% - 5px);
+  right: 0;
+  transform: rotate(0);
+}
+.board-step.to-bottom .board-step-arrow {
+  bottom: 0;
+  left: calc(50% - 5px);
+  transform: rotate(90deg);
+}
+.board-step.to-left .board-step-arrow {
+  top: calc(50% - 5px);
+  left: 0;
+  transform: rotate(180deg);
+}
