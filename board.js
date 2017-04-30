@@ -110,7 +110,7 @@ let countStepPosition = (cell_el, cell_index, cell_size, board_size) => {
   cell_el.style.top = pos_top + '%';
   cell_el.style.left = pos_left + '%';
   cell_el.classList.add(...pos_class);
-  return { pos_top, pos_left };
+  return { top: pos_top, left: pos_left };
 };
 
 let createStep = (step_data, step_index, board_holder, board_size) => {
@@ -236,5 +236,38 @@ let createBoard = (board_holder, board_data) => {
 };
 
 // Sizes: 10, 12, 16, 20, 24, 30, 36, 40
-let board = createBoard(document.getElementById('board'), data.slice(0, 12));
-console.log(board);
+let cgBoard = createBoard(document.getElementById('board'), data.slice(0, 30));
+console.log(cgBoard);
+
+
+// Test entity:
+let walkPath = (board) => {
+  if (!board || !board.steps || !board.steps.length) return;
+
+  let setPosition = (entity, step) => {
+    entity.style.top = step.position.top + step.size.height/2 + '%';
+    entity.style.left = step.position.left + step.size.width/2 + '%';
+  };
+
+  // Create entity:
+  let entity = document.createElement('div');
+      entity.className = 'board-entity';
+      setPosition(entity, board.steps[board.steps.length - 1]);
+
+  let holder = board.holder;
+      holder.appendChild(entity);
+
+  let counter = 0;
+  let walk = () => {
+    // let prev = board.steps[counter - 1] || board.steps[board.steps.length - 1];
+    // let next = board.steps[counter];
+    // prev && prev.elements.block.classList.remove('active');
+    // next && next.elements.block.classList.add('active');
+
+    setPosition(entity, board.steps[counter]);
+    counter = counter < board.steps.length - 1 ? counter + 1 : 0;
+  };
+  setInterval(walk, 500);
+}
+walkPath(cgBoard);
+

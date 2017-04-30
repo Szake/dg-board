@@ -40,6 +40,20 @@ body {
   min-height: 600px;
 }
 
+.board-entity {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  margin: -20px 0 0 -20px;
+  box-sizing: border-box;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #ccc;
+  box-shadow: 0 0 5px rgba(0,0,0,0.6), inset 0 0 5px rgba(0,0,0,0.6);
+  transition: top 0.5s ease 0s, left 0.5s ease 0s;
+}
+
 .board-step {
   position: absolute;
   flex: 0 0 auto;
@@ -47,11 +61,12 @@ body {
   padding: 20px;
   background: transparent;
 }
-// .board-step.to-top {}
-// .board-step.to-right {}
-// .board-step.to-bottom {}
-// .board-step.to-left {}
-// .board-step.root {}
+.board-step.to-top {}
+.board-step.to-right {}
+.board-step.to-bottom {}
+.board-step.to-left {}
+.board-step.root {}
+.board-step.active { outline: 2px solid red; }
 
 .board-step-inner {
   position: relative;
@@ -62,7 +77,7 @@ body {
   box-sizing: border-box;
   padding: 10px 5px;
   background: #444;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  box-shadow: 0 0 5px rgba(0,0,0,0.6);
   font-size: calc(80% + 0.5vw);
   color: #fff;
   text-align: center;
