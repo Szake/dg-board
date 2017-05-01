@@ -66,7 +66,6 @@ body {
 .board-step.to-bottom {}
 .board-step.to-left {}
 .board-step.root {}
-.board-step.active { outline: 2px solid red; }
 
 .board-step-inner {
   position: relative;
@@ -86,6 +85,9 @@ body {
 .board-step.root .board-step-inner {
   border: 2px solid #fff;
 }
+.board-step.active .board-step-inner {
+  background: #777;
+}
 
 .board-step-label {
   position: absolute;
@@ -101,6 +103,9 @@ body {
   font-size: 10px;
   line-height: 20px;
   color: #fff;
+}
+.board-step.active .board-step-label {
+  background: #777;
 }
 
 .board-step-path {
