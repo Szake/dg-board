@@ -75,6 +75,9 @@ class GameBoard {
       throw new Error(`Not enough data(${cells}) to build the board. Allowed sizes: ${sizes.join(', ')}.`);
     }
 
+    // Empty the holder:
+    holder.innerHTML = '';
+
     // Count rows and columns:
     if      (cells <= 10) { rows = 2; cols = 5; cells = 10; }
     else if (cells <= 16) { rows = 4; cols = 4; cells = 16; }
@@ -239,7 +242,7 @@ class GameBoard {
 
 
 // Sizes: 10, 12, 16, 20, 24, 30, 36, 40
-let cgBoard = new GameBoard(document.getElementById('board'), data.slice(0, 16));
+let cgBoard = new GameBoard(document.getElementById('board'), data.slice(0, 24));
 // cgBoard.setColor({'arrow': '#000', 'board': '#eee', 'step': '#000', 'path': '#fff00f', 'label': '#000'});
 
 
@@ -277,4 +280,3 @@ let walkPath = (board) => {
   setInterval(walk, 500);
 }
 walkPath(cgBoard);
-
